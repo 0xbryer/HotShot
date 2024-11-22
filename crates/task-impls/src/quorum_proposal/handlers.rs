@@ -126,7 +126,8 @@ impl<TYPES: NodeType, V: Versions> ProposalDependencyHandle<TYPES, V> {
                 if qc
                     .is_valid_cert(
                         self.quorum_membership.stake_table(TYPES::Epoch::new(0)),
-                        self.quorum_membership.success_threshold(),
+                        self.quorum_membership
+                            .success_threshold(TYPES::Epoch::new(0)),
                         &self.upgrade_lock,
                     )
                     .await
